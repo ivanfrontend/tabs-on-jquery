@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" >
+    <link rel="stylesheet" href="style/style.css">
+    <meta charset="UTF-8">
+    <title>site1</title>
+</head>
+<body>
+<style>
+	.tabs__content {
+  display: none; /* по умолчанию прячем все блоки */
+}
+.tabs__content.active {
+  display: block; /* по умолчанию показываем нужный блок */
+}
+	
+</style>
+<div class="tabs">
+
+  <ul class="tabs__caption">
+    <li class="active">1-я вкладка</li>
+    <li>2-я вкладка</li>
+  </ul>
+
+  <div class="tabs__content active">
+    Содержимое первого блока
+  </div>
+
+  <div class="tabs__content">
+    Содержимое второго блока
+  </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/js.js"></script>
+<script>
+ 
+     $('ul.tabs__caption').on('click', 'li:not(.active)', function() {
+    $(this)
+      .addClass('active').siblings().removeClass('active')
+      .closest('div.tabs').find('div.tabs__content').removeClass('active').eq($(this).index()).addClass('active');
+  });
+
+</script>
+</body>
+</html>
